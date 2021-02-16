@@ -1,16 +1,27 @@
 let AllData=[];
 $.ajax("../data/page-1.json").then(data=>{
-
+let KEY=[];
     data.forEach(element => {
         // console.log(element);
         let Data=new animal (element);
         AllData.push(element);
+        if (!KEY.includes(element.keyword)) {
+            KEY.push(element.keyword);
+        }
+
+       
+        console.log(KEY);
 // console.log(Data.image);
 Data.render();
     });
     
-    $("#photo-template").first().hide();
-
+    $(".photo-template").first().hide();
+   
+    KEY.forEach(element => {
+        
+        $('select').append(`<option> ${element}</option>`);
+    
+    });
 })
 
 
@@ -18,7 +29,7 @@ function animal (a){
 this.image=a.image_url;
 this.title=a.title;
 this.description=a.description;
-this.hornes=a.hornes;
+this.horns=a.horns;
 this.keyword=a.keyword;
 }
 
@@ -29,7 +40,7 @@ this.keyword=a.keyword;
 
 // let div="<div></div>"
 
- let template=$("#photo-template").clone();
+ let template=$(".photo-template").first().clone();
 
    
       
@@ -51,7 +62,7 @@ $("#selection").change(function (e) {
  
  $("main").html("");
  let divTemp=$("main").append("<div></div>");
- $("div").attr('id', 'photo-template');
+ $("div").addClass('photo-template');
 
 
 AllData.forEach(element => {
@@ -68,7 +79,7 @@ Render(element);
 
 
 
-$("#photo-template").first().hide();
+$(".photo-template").first().hide();
 
 
 });
@@ -76,7 +87,7 @@ $("#photo-template").first().hide();
 
 let Render=render=d=>{
 
-    let template=$("#photo-template").clone();
+    let template=$(".photo-template").first().clone();
 
     template.append("<h2></h2>")
     template.append("<img></img>")
@@ -88,7 +99,7 @@ let Render=render=d=>{
     template.find("img").attr("src",d.image_url);
 template.find("p").text(d.description); 
 
-$("main").append(template)
+$("main").append(template);
 
 }
 
