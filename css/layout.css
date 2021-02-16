@@ -66,13 +66,14 @@ header >*{
 text-align: center;
 
 }
-header select{
+header select {
     float: right;
     padding: 10px;
     background-color: rgb(241, 241, 184);
     margin-right: 15px;
    transform: translateY(-15px);
 }
+
 
 footer {
     box-shadow: 1px 0px 4px  1px rgb(177, 169, 169);
@@ -81,4 +82,12 @@ background-color: rgb(233, 149, 70);
 
 height: 50px;
 border:1px solid black;
+}
+
+button{
+padding: 5px;
+    float: right;
+    background-color:rgb(241, 241, 184) ;
+    margin-right: 15px;
+    transform: translateY(-9px);
 }
