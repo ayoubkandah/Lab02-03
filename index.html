@@ -4,44 +4,55 @@
 <html>
   <head>
     <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js" integrity="sha512-HYiNpwSxYuji84SQbCU5m9kHEsRqwWypXgJMBtbRSumlx1iBB6QaxgEBZHSHEGM+fKyCX/3Kb5V5jeVXm0OglQ==" crossorigin="anonymous"></script>
+
     <title>The Gallery of Horns</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     
-    
+    <link rel="stylesheet" href="css/layout.css">
+        
+    <link rel="stylesheet" href="css/state.css">
+    <link rel="stylesheet" href="css/module.css">
+
   </head>
   <body>
     <header>
       <h1>The Gallery of Horns</h1>
       <select id="selection">
         <option value="default">Filter by Keyword</option>
-        <option value="narwhal">narwhal</option>
-        <option value="rhino" selected>rhino</option>
-        <option value="unicorn">unicorn</option>
-        <option value="unilego">unilego</option>
-        <option value="triceratops">triceratops</option>
-        <option value="markhor">markhor</option>
-        <option value="mouflon">mouflon</option>
-        <option value="addax">addax</option>
-        <option value="chameleon">chameleon</option>
-        <option value="lizard">lizard</option>
-        <option value="dragon">dragon</option>
+
+    
+
 
       </select>
+      <button id="page1">Page1</button>
+      <button id="page2">Page2</button>
     </header>
     <main>
-      <div id="first">
-      <div id="photo-template">
+      <script id='temp' type='text/x-tmpl-mustache'>
+        <div class="photo-template">
+          <h2>{{title}}</h2>
+          <img src="{{image_url}}" alt="">
+          <p>{{description}}</p>
+        </div>
+      </script>
+      <!-- <div id="first">
+      <div class="photo-template">
         <h2></h2>
         <img src="" alt="">
         <p></p>
     </div>
-  </div>
+  </div> -->
+  
     </main>
     <footer>
-      &copy; 2018 Code Fellows
-    </footer>
     
+    &copy; 2018 Code Fellows
+      
+    </footer>
     <script src="js/app.js"></script>
+    <script src="js/scroll.js"></script>
+    
+
   </body>
 </html>

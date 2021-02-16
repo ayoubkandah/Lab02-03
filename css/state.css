@@ -1,0 +1,27 @@
+.photo-template{
+    opacity: 0;
+    transform: translateY(100px);
+  
+    transition: 0.9s all ease-in-out;
+}
+
+.appear{
+
+    opacity: 1;
+  
+    transform: translateY(0px);
+}
+
+button{
+    padding: 5px;
+        float: right;
+        background-color:rgb(241, 241, 184) ;
+        margin-right: 15px;
+        transform: translateY(-9px);
+    }
+
+    button:hover{
+
+        background-color:rgb(224, 224, 68) ;
+
+    }
