@@ -1,6 +1,11 @@
-
+let page1bol=false;////its           seperate sort
+let page2bol=false;///     to make                   for 2 pages
+let selecT=false; // its for make trigger bool for sorting the keyword
 
 let Page1=d=>{
+    selecT=false;
+     page1bol=true;
+     page2bol=false;
     $("option").remove();
     $("div").remove();
     let AllData=[];
@@ -26,13 +31,13 @@ let Page1=d=>{
         // $(".photo-template").first().hide();
        
         KEY.forEach(element => {
-            $('select').append(`<option> ${element}</option>`);
+            $('#selection').append(`<option> ${element}</option>`);
         
         });
 
 
-        $("select").append(`<option> horn </option>`)
-        $("select").append(`<option> title </option>`)
+        $("#sort").append(`<option> horn </option>`)
+        $("#sort").append(`<option> title </option>`)
     })
     
     
@@ -58,13 +63,16 @@ let Page1=d=>{
         $("main").append(OBJ)
         
      }
+    
      $("#selection").change(function (e) { 
             e.preventDefault();
-         
+            selecT=true;
          $("div").remove();
         
         
         AllData.forEach(element => {
+
+            
             if(element.keyword==$("#selection").val()){
         
                 let temp=  $('#temp').html();
@@ -78,8 +86,20 @@ let Page1=d=>{
 
     
     });
-    if($("select").val()=="horn"){
-          
+    setTimeout(() => {
+        $("div").addClass("appear")
+    
+    }, 80);
+})
+$("#sort").change(function (e) {
+
+   if(!selecT){
+
+    
+    $("div").remove();
+    if(page1bol){
+    if($("#sort").val()=="horn"){
+          console.log("eeee");
         AllData.sort(function(a, b){return a.horns-b.horns});
 
         AllData.forEach(element => {
@@ -96,37 +116,82 @@ let Page1=d=>{
     
     });
 
-
-
-}
-if($("select").val()=="title"){
-    console.log("dsass");
-
-    AllData.forEach(element => {
-        if(element.title.charAt(0)=="#"){
-    console.log("ss");
-            let temp=  $('#temp').html();
-
-            let OBJ = Mustache.render(temp,element);
-           
-            $("main").append(OBJ)
-            
-
-    }
-
-
-});
-
-
-    }
     setTimeout(() => {
         $("div").addClass("appear")
     
     }, 80);
+
+}
+if($("#sort").val()=="title"){
+    console.log("dsass");
+    $("div").remove();
+    AllData.sort(function(a, b){
+        if(a.title < b.title) { return -1; }
+        if(a.title > b.title) { return 1; }
+        return 0;
+      })
+      console.log(AllData);
+   
     
-     });
+    
+    AllData.forEach(element => {
+        let temp=  $('#temp').html();
+    
+        let OBJ = Mustache.render(temp,element);
+       
+        $("main").append(OBJ)
+
+});
+};
+}
+    
+    
+}
+
+if(selecT){
+
+    $("div").remove();
+    if($("#sort").val()=="title"){
+       
+        AllData.sort(function(a, b){
+            if(a.title < b.title) { return -1; }
+            if(a.title > b.title) { return 1; }
+            return 0;
+          });
+        }
+        if($("#sort").val()=="horn"){
+            console.log("eeee");
+          AllData.sort(function(a, b){return a.horns-b.horns});
+        }
+
+
+AllData.forEach(element => {
+
+            
+    if(element.keyword==$("#selection").val()){
+
+        let temp=  $('#temp').html();
+
+        let OBJ = Mustache.render(temp,element);
+       
+        $("main").append(OBJ)
+        
+
+}
+});
+setTimeout(() => {
+    $("div").addClass("appear")
+
+}, 80);
+
+
+    }
+});
 }
 let Page2=d=>{
+    selecT=false;
+    page1bol=false;
+    page2bol=true;
     $("option").remove();
     $("div").remove();
     let AllData=[];
@@ -151,11 +216,12 @@ let Page2=d=>{
        
         KEY.forEach(element => {
          
-            $('select').append(`<option> ${element}</option>`);
+            $('#selection').append(`<option> ${element}</option>`);
         
         });
 
-        $("select").append(`<option> horn </option>`)
+        $("#sort").append(`<option> horn </option>`)
+        $("#sort").append(`<option> title </option>`)
 
     })
     
@@ -168,67 +234,143 @@ let Page2=d=>{
     this.keyword=a.keyword;
     }
     
-     animal.prototype.render=function(d){
-    // console.log("d");
-    
-    
-    
-    // let div="<div></div>"
-    let temp=  $('#temp').html();
-    
-        let OBJ = Mustache.render(temp,d);
-       
-        $("main").append(OBJ)
-        
-     }
-     $("#selection").change(function (e) { 
-            e.preventDefault();
-         
-         $("div").remove();
+    animal.prototype.render=function(d){
+        // console.log("d");
         
         
-        AllData.forEach(element => {
-            if(element.keyword==$("#selection").val()){
         
-                let temp=  $('#temp').html();
+        // let div="<div></div>"
+        let temp=  $('#temp').html();
+        
+            let OBJ = Mustache.render(temp,d);
+           
+            $("main").append(OBJ)
+            
+         }
+        
+         $("#selection").change(function (e) { 
+                e.preventDefault();
+                selecT=true;
+             $("div").remove();
+            
+            
+            AllData.forEach(element => {
     
-                let OBJ = Mustache.render(temp,element);
-               
-                $("main").append(OBJ)
                 
+                if(element.keyword==$("#selection").val()){
+            
+                    let temp=  $('#temp').html();
+        
+                    let OBJ = Mustache.render(temp,element);
+                   
+                    $("main").append(OBJ)
+                    
+        
+            }
     
-        }
+        
+        });
+        setTimeout(() => {
+            $("div").addClass("appear")
+        
+        }, 80);
+    })
+    $("#sort").change(function (e) {
     
-    });
-
-     if($("select").val()=="horn"){
+       if(!selecT){
+    
+        
         $("div").remove();
-
-        AllData.sort(function(a, b){return a.horns-b.horns});
-
-        AllData.forEach(element => {
+        if(page2bol){
+        if($("#sort").val()=="horn"){
+              console.log("eeee");
+            AllData.sort(function(a, b){return a.horns-b.horns});
+    
+            AllData.forEach(element => {
+                
+            
+                    let temp=  $('#temp').html();
+        
+                    let OBJ = Mustache.render(temp,element);
+                   
+                    $("main").append(OBJ)
+                    
+        
             
         
-                let temp=  $('#temp').html();
+        });
     
-                let OBJ = Mustache.render(temp,element);
-               
-                $("main").append(OBJ)
-                
-    
+        setTimeout(() => {
+            $("div").addClass("appear")
         
+        }, 80);
+    
+    }
+    if($("#sort").val()=="title"){
+        console.log("dsass");
+        $("div").remove();
+        AllData.sort(function(a, b){
+            if(a.title < b.title) { return -1; }
+            if(a.title > b.title) { return 1; }
+            return 0;
+          })
+          console.log(AllData);
+       
+        
+        
+        AllData.forEach(element => {
+            let temp=  $('#temp').html();
+        
+            let OBJ = Mustache.render(temp,element);
+           
+            $("main").append(OBJ)
     
     });
-
-
-
-}
+    };
+    }
+        
+        
+    }
+    
+    if(selecT){
+    
+        $("div").remove();
+        if($("#sort").val()=="title"){
+           
+            AllData.sort(function(a, b){
+                if(a.title < b.title) { return -1; }
+                if(a.title > b.title) { return 1; }
+                return 0;
+              });
+            }
+            if($("#sort").val()=="horn"){
+                console.log("eeee");
+              AllData.sort(function(a, b){return a.horns-b.horns});
+            }
+    
+    
+    AllData.forEach(element => {
+    
+                
+        if(element.keyword==$("#selection").val()){
+    
+            let temp=  $('#temp').html();
+    
+            let OBJ = Mustache.render(temp,element);
+           
+            $("main").append(OBJ)
+            
+    
+    }
+    });
     setTimeout(() => {
         $("div").addClass("appear")
     
     }, 80);
     
-     });
+    
+        }
+    });
 }
 
 Page1();   

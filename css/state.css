@@ -25,3 +25,8 @@ button{
         background-color:rgb(224, 224, 68) ;
 
     }
+
+
+    select{
+        background-color: cadetblue;
+    }

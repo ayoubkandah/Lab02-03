@@ -1,0 +1,15 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h2{
+    font: bold;
+    font-size: 20px;
+    margin-top: 15px;
+}
+p{
+    font-style: italic;
+}
+main{
+    height: 100%;
+}
