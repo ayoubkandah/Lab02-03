@@ -12,51 +12,13 @@ main{
     background-color: rgb(228, 224, 205);
     border-right: 1px groove black;
     border-left: 1px groove black;
+box-sizing: border-box;
 }
-.photo-template{
-    align-items: center;
-
-    position: relative;
-display: inline-block;   
-    align-items: stretch;
-    
-    background-color:rgba(241, 216, 170, 0.822) ;
-border: 2px solid black;
-box-shadow: 1px 0px 4px  2px rgb(175, 166, 147);
-width:300px;        
-height: 400px;
-margin: 25px;
-   margin-left: 80px;
 
 
-}
-img{
-    margin-top: 70px;
- 
-    margin-left: 45px;
-    width: 200px;
-    height: 200px;
-}
-h2{
-
-     position: absolute;
-     text-align: center;
-     width: 100%;
-/* overflow:hidden;
-display: flex; */ 
-
-}
-p{
-
-position: absolute;
-overflow:hidden;
-    bottom: 40px;
-    left: 10px;
-    right: 10px;
-
-}
 header{
-    
+    box-sizing: border-box;
+
     width: 100%;
     background-color: rgb(233, 149, 70);
     border:1px solid black;
@@ -66,16 +28,11 @@ header >*{
 text-align: center;
 
 }
-header select {
-    float: right;
-    padding: 10px;
-    background-color: rgb(241, 241, 184);
-    margin-right: 15px;
-   transform: translateY(-15px);
-}
 
 
 footer {
+    box-sizing: border-box;
+
     box-shadow: 1px 0px 4px  1px rgb(177, 169, 169);
 width: 100%;
 background-color: rgb(233, 149, 70);
@@ -84,10 +41,3 @@ height: 50px;
 border:1px solid black;
 }
 
-button{
-padding: 5px;
-    float: right;
-    background-color:rgb(241, 241, 184) ;
-    margin-right: 15px;
-    transform: translateY(-9px);
-}
